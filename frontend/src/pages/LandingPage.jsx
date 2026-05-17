@@ -36,35 +36,35 @@ export default function LandingPage() {
       </div>
 
       {/* Navbar principal */}
-      <nav style={{ background: '#fff', borderBottom: '1px solid #E0E6EF', padding: '0.8rem 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', boxShadow: '0 2px 8px rgba(0,0,0,0.06)', position: 'sticky', top: 0, zIndex: 100 }}>
+      <nav style={{ background: '#004A9F', padding: '0.8rem 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', boxShadow: '0 2px 8px rgba(0,0,0,0.15)', position: 'sticky', top: 0, zIndex: 100 }}>
         <img
           src="https://images.seeklogo.com/logo-png/29/1/caja-piura-logo-png_seeklogo-299545.png"
           alt="Caja Piura"
-          style={{ height: '42px', objectFit: 'contain', cursor: 'pointer' }}
+          style={{ height: '42px', objectFit: 'contain', cursor: 'pointer', filter: 'brightness(0) invert(1)' }}
           onClick={() => navigate('/')}
         />
 
-        <div style={{ display: 'flex', gap: '1.8rem', alignItems: 'center', fontSize: '0.88rem', fontWeight: 500, color: '#333' }}>
+        <div style={{ display: 'flex', gap: '1.8rem', alignItems: 'center', fontSize: '0.88rem', fontWeight: 500, color: 'rgba(255,255,255,0.9)' }}>
           {['Productos', 'Operaciones', 'Caja Digital', 'Promociones'].map(item => (
             <span key={item} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.3rem' }}
-              onMouseEnter={e => e.currentTarget.style.color = '#004A9F'}
-              onMouseLeave={e => e.currentTarget.style.color = '#333'}
+              onMouseEnter={e => e.currentTarget.style.color = '#F5C200'}
+              onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.9)'}
             >
               {item} <i className="fa-solid fa-chevron-down" style={{ fontSize: '0.7rem' }} />
             </span>
           ))}
           <span style={{ cursor: 'pointer' }}
-            onMouseEnter={e => e.currentTarget.style.color = '#004A9F'}
-            onMouseLeave={e => e.currentTarget.style.color = '#333'}
+            onMouseEnter={e => e.currentTarget.style.color = '#F5C200'}
+            onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.9)'}
           >
             ¿Necesitas Ayuda? <i className="fa-solid fa-chevron-down" style={{ fontSize: '0.7rem' }} />
           </span>
-          <i className="fa-solid fa-magnifying-glass" style={{ color: '#555', cursor: 'pointer', fontSize: '1rem' }} />
-          <i className="fa-solid fa-phone" style={{ color: '#555', cursor: 'pointer', fontSize: '1rem' }} />
+          <i className="fa-solid fa-magnifying-glass" style={{ color: 'rgba(255,255,255,0.8)', cursor: 'pointer', fontSize: '1rem' }} />
+          <i className="fa-solid fa-phone" style={{ color: 'rgba(255,255,255,0.8)', cursor: 'pointer', fontSize: '1rem' }} />
           <button
-            className="btn btn-azul"
+            className="btn"
             onClick={() => navigate('/banca')}
-            style={{ borderRadius: '25px', padding: '0.55rem 1.3rem', fontSize: '0.85rem' }}
+            style={{ borderRadius: '25px', padding: '0.55rem 1.3rem', fontSize: '0.85rem', background: '#F5C200', color: '#003580', fontWeight: 700 }}
           >
             Banca por internet
           </button>
