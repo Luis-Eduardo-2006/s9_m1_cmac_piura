@@ -47,21 +47,21 @@ export default function LandingPage() {
         {/* Links */}
         <div style={{ display: 'flex', gap: '1.6rem', alignItems: 'center', fontSize: '0.88rem', fontWeight: 600, color: '#fff' }}>
           {['Productos', 'Operaciones', 'Caja Digital', 'Promociones'].map(item => (
-            <span key={item} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.3rem', opacity: 0.9 }}
-              onMouseEnter={e => e.currentTarget.style.opacity = '1'}
-              onMouseLeave={e => e.currentTarget.style.opacity = '0.9'}
+            <span key={item} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.3rem', color: '#fff' }}
+              onMouseEnter={e => e.currentTarget.style.color = '#F5C200'}
+              onMouseLeave={e => e.currentTarget.style.color = '#fff'}
             >
               {item} <i className="fa-solid fa-chevron-down" style={{ fontSize: '0.65rem' }} />
             </span>
           ))}
-          <span style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.3rem', opacity: 0.9 }}
-            onMouseEnter={e => e.currentTarget.style.opacity = '1'}
-            onMouseLeave={e => e.currentTarget.style.opacity = '0.9'}
+          <span style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.3rem', color: '#fff' }}
+            onMouseEnter={e => e.currentTarget.style.color = '#F5C200'}
+            onMouseLeave={e => e.currentTarget.style.color = '#fff'}
           >
             ¿Necesitas Ayuda? <i className="fa-solid fa-chevron-down" style={{ fontSize: '0.65rem' }} />
           </span>
-          <i className="fa-solid fa-magnifying-glass" style={{ cursor: 'pointer', opacity: 0.9, fontSize: '1rem' }} />
-          <i className="fa-solid fa-phone" style={{ cursor: 'pointer', opacity: 0.9, fontSize: '1rem' }} />
+          <i className="fa-solid fa-magnifying-glass" style={{ cursor: 'pointer', color: '#fff', fontSize: '1rem' }} />
+          <i className="fa-solid fa-phone" style={{ cursor: 'pointer', color: '#fff', fontSize: '1rem' }} />
           <button
             onClick={() => navigate('/banca')}
             style={{ background: '#00B4C8', color: '#fff', border: 'none', borderRadius: '25px', padding: '0.55rem 1.3rem', fontSize: '0.85rem', fontWeight: 700, cursor: 'pointer', whiteSpace: 'nowrap' }}
