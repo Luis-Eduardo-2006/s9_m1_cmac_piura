@@ -36,35 +36,35 @@ export default function LandingPage() {
       </div>
 
       {/* Navbar principal */}
-      <nav style={{ background: '#004A9F', padding: '0.8rem 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', boxShadow: '0 2px 8px rgba(0,0,0,0.15)', position: 'sticky', top: 0, zIndex: 100 }}>
-        <img
-          src="https://images.seeklogo.com/logo-png/29/1/caja-piura-logo-png_seeklogo-299545.png"
-          alt="Caja Piura"
-          style={{ height: '42px', objectFit: 'contain', cursor: 'pointer', filter: 'brightness(0) invert(1)' }}
-          onClick={() => navigate('/')}
-        />
+      <nav style={{ background: '#004A9F', padding: '0.75rem 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', boxShadow: '0 2px 8px rgba(0,0,0,0.2)', position: 'sticky', top: 0, zIndex: 100 }}>
 
-        <div style={{ display: 'flex', gap: '1.8rem', alignItems: 'center', fontSize: '0.88rem', fontWeight: 500, color: 'rgba(255,255,255,0.9)' }}>
+        {/* Logo */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }} onClick={() => navigate('/')}>
+          <i className="fa-solid fa-building-columns" style={{ color: '#fff', fontSize: '1.5rem' }} />
+          <span style={{ color: '#fff', fontWeight: 800, fontSize: '1.1rem', letterSpacing: '0.5px' }}>CAJA PIURA</span>
+        </div>
+
+        {/* Links */}
+        <div style={{ display: 'flex', gap: '1.6rem', alignItems: 'center', fontSize: '0.88rem', fontWeight: 600, color: '#fff' }}>
           {['Productos', 'Operaciones', 'Caja Digital', 'Promociones'].map(item => (
-            <span key={item} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.3rem' }}
-              onMouseEnter={e => e.currentTarget.style.color = '#F5C200'}
-              onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.9)'}
+            <span key={item} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.3rem', opacity: 0.9 }}
+              onMouseEnter={e => e.currentTarget.style.opacity = '1'}
+              onMouseLeave={e => e.currentTarget.style.opacity = '0.9'}
             >
-              {item} <i className="fa-solid fa-chevron-down" style={{ fontSize: '0.7rem' }} />
+              {item} <i className="fa-solid fa-chevron-down" style={{ fontSize: '0.65rem' }} />
             </span>
           ))}
-          <span style={{ cursor: 'pointer' }}
-            onMouseEnter={e => e.currentTarget.style.color = '#F5C200'}
-            onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.9)'}
+          <span style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.3rem', opacity: 0.9 }}
+            onMouseEnter={e => e.currentTarget.style.opacity = '1'}
+            onMouseLeave={e => e.currentTarget.style.opacity = '0.9'}
           >
-            ¿Necesitas Ayuda? <i className="fa-solid fa-chevron-down" style={{ fontSize: '0.7rem' }} />
+            ¿Necesitas Ayuda? <i className="fa-solid fa-chevron-down" style={{ fontSize: '0.65rem' }} />
           </span>
-          <i className="fa-solid fa-magnifying-glass" style={{ color: 'rgba(255,255,255,0.8)', cursor: 'pointer', fontSize: '1rem' }} />
-          <i className="fa-solid fa-phone" style={{ color: 'rgba(255,255,255,0.8)', cursor: 'pointer', fontSize: '1rem' }} />
+          <i className="fa-solid fa-magnifying-glass" style={{ cursor: 'pointer', opacity: 0.9, fontSize: '1rem' }} />
+          <i className="fa-solid fa-phone" style={{ cursor: 'pointer', opacity: 0.9, fontSize: '1rem' }} />
           <button
-            className="btn"
             onClick={() => navigate('/banca')}
-            style={{ borderRadius: '25px', padding: '0.55rem 1.3rem', fontSize: '0.85rem', background: '#F5C200', color: '#003580', fontWeight: 700 }}
+            style={{ background: '#00B4C8', color: '#fff', border: 'none', borderRadius: '25px', padding: '0.55rem 1.3rem', fontSize: '0.85rem', fontWeight: 700, cursor: 'pointer', whiteSpace: 'nowrap' }}
           >
             Banca por internet
           </button>
