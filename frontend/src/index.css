@@ -1,0 +1,85 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --rojo: #8B0000;
+  --rojo-medio: #A50000;
+  --rojo-claro: #C0392B;
+  --dorado: #C8960C;
+  --amarillo: #F5C518;
+  --gris-claro: #F5F5F5;
+  --gris-texto: #555555;
+  --negro: #1A1A1A;
+  --blanco: #FFFFFF;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  background: var(--gris-claro);
+  color: var(--negro);
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.65rem 1.4rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-rojo {
+  background: var(--rojo);
+  color: var(--blanco);
+}
+
+.btn-rojo:hover {
+  background: var(--rojo-medio);
+}
+
+.btn-dorado {
+  background: var(--dorado);
+  color: var(--blanco);
+}
+
+.btn-dorado:hover {
+  background: var(--amarillo);
+  color: var(--negro);
+}
+
+.btn-outline-blanco {
+  background: transparent;
+  border: 2px solid var(--blanco);
+  color: var(--blanco);
+}
+
+.btn-outline-blanco:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.error-msg {
+  color: #e74c3c;
+  font-size: 0.85rem;
+  margin-top: 0.4rem;
+}
+
+.success-msg {
+  color: #27ae60;
+  font-size: 0.85rem;
+  margin-top: 0.4rem;
+}
