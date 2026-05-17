@@ -25,11 +25,11 @@ export default function LandingPage() {
       {/* Barra superior */}
       <div style={{ background: '#002D6E', padding: '0.35rem 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.75rem', color: 'rgba(255,255,255,0.75)' }}>
         <div style={{ display: 'flex', gap: '1.5rem' }}>
-          <span><i className="fa-solid fa-phone" style={{ marginRight: '0.4rem', color: '#F47920' }} />(073) 284-300</span>
-          <span><i className="fa-solid fa-envelope" style={{ marginRight: '0.4rem', color: '#F47920' }} />atencionalcliente@cajapiura.com.pe</span>
+          <span><i className="fa-solid fa-phone" style={{ marginRight: '0.4rem', color: '#F5C200' }} />(073) 284-300</span>
+          <span><i className="fa-solid fa-envelope" style={{ marginRight: '0.4rem', color: '#F5C200' }} />atencionalcliente@cajapiura.com.pe</span>
         </div>
         <div style={{ display: 'flex', gap: '1.5rem' }}>
-          <span><i className="fa-solid fa-triangle-exclamation" style={{ marginRight: '0.3rem', color: '#F47920' }} />Emergencia</span>
+          <span><i className="fa-solid fa-triangle-exclamation" style={{ marginRight: '0.3rem', color: '#F5C200' }} />Emergencia</span>
           <span><i className="fa-solid fa-universal-access" style={{ marginRight: '0.3rem' }} />Accesibilidad</span>
           <span>Lun–Vie: 8:00am – 6:00pm</span>
         </div>
@@ -73,7 +73,7 @@ export default function LandingPage() {
 
       {/* Tabs Para mí / Para mi negocio */}
       <div style={{ background: '#004A9F', display: 'flex', gap: 0 }}>
-        <button style={{ background: '#F47920', color: '#fff', border: 'none', padding: '0.6rem 1.8rem', fontWeight: 600, fontSize: '0.85rem', cursor: 'pointer' }}>
+        <button style={{ background: '#F5C200', color: '#fff', border: 'none', padding: '0.6rem 1.8rem', fontWeight: 600, fontSize: '0.85rem', cursor: 'pointer' }}>
           Para mí
         </button>
         <button style={{ background: 'transparent', color: 'rgba(255,255,255,0.8)', border: 'none', padding: '0.6rem 1.8rem', fontWeight: 500, fontSize: '0.85rem', cursor: 'pointer' }}
@@ -93,10 +93,10 @@ export default function LandingPage() {
         <div style={{ maxWidth: '520px', position: 'relative', zIndex: 1 }}>
           <h1 style={{ fontSize: '3rem', fontWeight: 800, lineHeight: 1.15, marginBottom: '1rem' }}>
             Impulsando<br />
-            <span style={{ color: '#F47920', fontStyle: 'italic' }}>oportunidades</span>
+            <span style={{ color: '#F5C200', fontStyle: 'italic' }}>oportunidades</span>
           </h1>
           <p style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.9)', marginBottom: '0.5rem', fontWeight: 600 }}>
-            Estás viendo <span style={{ color: '#F47920' }}>soluciones para ti.</span>
+            Estás viendo <span style={{ color: '#F5C200' }}>soluciones para ti.</span>
           </p>
           <p style={{ fontSize: '0.95rem', color: 'rgba(255,255,255,0.8)', marginBottom: '2rem' }}>
             ¿Necesitas opciones para tu negocio?
@@ -105,7 +105,7 @@ export default function LandingPage() {
             <button className="btn" style={{ background: '#1A1A2E', color: '#fff', borderRadius: '8px', padding: '0.75rem 1.5rem' }} onClick={() => navigate('/banca')}>
               <i className="fa-solid fa-briefcase" /> Para mi negocio
             </button>
-            <button className="btn btn-naranja" style={{ borderRadius: '8px', padding: '0.75rem 1.5rem' }} onClick={() => navigate('/banca')}>
+            <button className="btn btn-amarillo" style={{ borderRadius: '8px', padding: '0.75rem 1.5rem' }} onClick={() => navigate('/banca')}>
               <i className="fa-solid fa-right-to-bracket" /> Banca por internet
             </button>
           </div>
@@ -113,7 +113,7 @@ export default function LandingPage() {
 
         {/* Badge 44 años */}
         <div style={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
-          <div style={{ width: '180px', height: '180px', background: '#F47920', borderRadius: '50%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 32px rgba(244,121,32,0.4)' }}>
+          <div style={{ width: '180px', height: '180px', background: '#F5C200', borderRadius: '50%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 32px rgba(245,194,0,0.45)' }}>
             <div style={{ fontSize: '4rem', fontWeight: 900, color: '#003580', lineHeight: 1 }}>44</div>
             <div style={{ fontSize: '1rem', fontWeight: 700, color: '#003580' }}>años</div>
           </div>
@@ -127,7 +127,7 @@ export default function LandingPage() {
         <div style={{ maxWidth: '960px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', textAlign: 'center', padding: '1.8rem 2rem', gap: '1rem' }}>
           {stats.map((s) => (
             <div key={s.label} style={{ padding: '0.5rem' }}>
-              <i className={`fa-solid ${s.icono}`} style={{ color: '#F47920', fontSize: '1.4rem', marginBottom: '0.5rem', display: 'block' }} />
+              <i className={`fa-solid ${s.icono}`} style={{ color: '#F5C200', fontSize: '1.4rem', marginBottom: '0.5rem', display: 'block' }} />
               <div style={{ fontSize: '1.8rem', fontWeight: 800, color: '#004A9F' }}>{s.valor}</div>
               <div style={{ fontSize: '0.82rem', color: '#666', marginTop: '0.2rem' }}>{s.label}</div>
             </div>
@@ -139,11 +139,11 @@ export default function LandingPage() {
       <section style={{ background: 'linear-gradient(90deg, #f5f7fa 60%, #e8f0fb 100%)', padding: '2.5rem 4rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '2rem' }}>
         <div>
           <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#1A1A2E', marginBottom: '0.4rem' }}>
-            Simula tu crédito o ahorro <span style={{ color: '#F47920' }}>con Caja Piura</span>
+            Simula tu crédito o ahorro <span style={{ color: '#F5C200' }}>con Caja Piura</span>
           </h2>
           <p style={{ color: '#555', fontSize: '0.9rem' }}>Calcula tus cuotas y tasas en segundos, sin compromiso.</p>
         </div>
-        <button className="btn btn-naranja" style={{ whiteSpace: 'nowrap', borderRadius: '8px', padding: '0.8rem 2rem', fontSize: '0.95rem' }}>
+        <button className="btn btn-amarillo" style={{ whiteSpace: 'nowrap', borderRadius: '8px', padding: '0.8rem 2rem', fontSize: '0.95rem' }}>
           <i className="fa-solid fa-calculator" /> Simular ahora
         </button>
       </section>
@@ -153,7 +153,7 @@ export default function LandingPage() {
         <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
             <h2 style={{ fontSize: '1.8rem', fontWeight: 700, color: '#1A1A2E' }}>Nuestros Productos</h2>
-            <div style={{ width: '60px', height: '4px', background: '#F47920', margin: '0.8rem auto 0', borderRadius: '2px' }} />
+            <div style={{ width: '60px', height: '4px', background: '#F5C200', margin: '0.8rem auto 0', borderRadius: '2px' }} />
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
             {productos.map((p) => (
@@ -167,7 +167,7 @@ export default function LandingPage() {
                 </div>
                 <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#004A9F', marginBottom: '0.5rem' }}>{p.titulo}</h3>
                 <p style={{ fontSize: '0.88rem', color: '#666', lineHeight: 1.6, marginBottom: '1rem' }}>{p.desc}</p>
-                <span style={{ fontSize: '0.82rem', color: '#F47920', fontWeight: 600, cursor: 'pointer' }}>
+                <span style={{ fontSize: '0.82rem', color: '#F5C200', fontWeight: 600, cursor: 'pointer' }}>
                   Ver más <i className="fa-solid fa-arrow-right" style={{ fontSize: '0.75rem' }} />
                 </span>
               </div>
@@ -180,7 +180,7 @@ export default function LandingPage() {
       <section style={{ background: 'linear-gradient(90deg, #004A9F, #0060C8)', color: '#fff', padding: '3.5rem 4rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '2rem', flexWrap: 'wrap' }}>
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.7rem', marginBottom: '0.8rem' }}>
-            <div style={{ width: '44px', height: '44px', background: '#F47920', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ width: '44px', height: '44px', background: '#F5C200', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <i className="fa-solid fa-mobile-screen" style={{ color: '#fff', fontSize: '1.3rem' }} />
             </div>
             <h2 style={{ fontSize: '1.5rem', fontWeight: 700 }}>Caja Digital</h2>
@@ -189,7 +189,7 @@ export default function LandingPage() {
             Gestiona tus cuentas, realiza transferencias y consulta tus movimientos las 24 horas desde cualquier dispositivo.
           </p>
         </div>
-        <button className="btn btn-naranja" onClick={() => navigate('/banca')} style={{ borderRadius: '8px', padding: '0.9rem 2rem', fontSize: '1rem', whiteSpace: 'nowrap' }}>
+        <button className="btn btn-amarillo" onClick={() => navigate('/banca')} style={{ borderRadius: '8px', padding: '0.9rem 2rem', fontSize: '1rem', whiteSpace: 'nowrap' }}>
           <i className="fa-solid fa-right-to-bracket" /> Ingresar ahora
         </button>
       </section>
@@ -212,7 +212,7 @@ export default function LandingPage() {
             <div style={{ color: '#fff', fontWeight: 600, marginBottom: '1rem', fontSize: '0.88rem' }}>Productos</div>
             {['Ahorros', 'Créditos', 'CTS', 'Seguros', 'Fondos Mutuos'].map(item => (
               <div key={item} style={{ fontSize: '0.8rem', marginBottom: '0.5rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                <i className="fa-solid fa-chevron-right" style={{ fontSize: '0.6rem', color: '#F47920' }} />{item}
+                <i className="fa-solid fa-chevron-right" style={{ fontSize: '0.6rem', color: '#F5C200' }} />{item}
               </div>
             ))}
           </div>
@@ -225,7 +225,7 @@ export default function LandingPage() {
               { icon: 'fa-headset', text: 'SBS: 0800-10840 (gratuito)' },
             ].map(item => (
               <div key={item.text} style={{ fontSize: '0.78rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'flex-start', gap: '0.5rem' }}>
-                <i className={`fa-${item.icon.includes('whatsapp') ? 'brands' : 'solid'} ${item.icon}`} style={{ color: '#F47920', marginTop: '0.1rem', minWidth: '14px' }} />
+                <i className={`fa-${item.icon.includes('whatsapp') ? 'brands' : 'solid'} ${item.icon}`} style={{ color: '#F5C200', marginTop: '0.1rem', minWidth: '14px' }} />
                 {item.text}
               </div>
             ))}
@@ -234,7 +234,7 @@ export default function LandingPage() {
             <div style={{ color: '#fff', fontWeight: 600, marginBottom: '1rem', fontSize: '0.88rem' }}>Legal</div>
             {['Términos y Condiciones', 'Política de Privacidad', 'Tarifario', 'Libro de Reclamaciones'].map(item => (
               <div key={item} style={{ fontSize: '0.8rem', marginBottom: '0.5rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                <i className="fa-solid fa-chevron-right" style={{ fontSize: '0.6rem', color: '#F47920' }} />{item}
+                <i className="fa-solid fa-chevron-right" style={{ fontSize: '0.6rem', color: '#F5C200' }} />{item}
               </div>
             ))}
           </div>

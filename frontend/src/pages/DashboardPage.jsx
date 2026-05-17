@@ -11,7 +11,7 @@ const movimientos = [
 
 const tarjetas = [
   { label: 'Cuenta de Ahorros', valor: 'S/ 3,450.00', sub: 'N° 001-0000123456',  color: '#004A9F', icono: 'fa-piggy-bank' },
-  { label: 'Crédito MYPE',      valor: 'S/ 8,000.00', sub: 'Saldo pendiente',     color: '#F47920', icono: 'fa-hand-holding-usd' },
+  { label: 'Crédito MYPE',      valor: 'S/ 8,000.00', sub: 'Saldo pendiente',     color: '#F5C200', icono: 'fa-hand-holding-usd' },
   { label: 'Próxima cuota',     valor: 'S/   450.00', sub: 'Vence el 15/06/2026', color: '#E74C3C', icono: 'fa-calendar-day' },
   { label: 'CTS',               valor: 'S/ 1,200.00', sub: 'Depósito semestral',  color: '#27AE60', icono: 'fa-briefcase' },
 ];
@@ -48,7 +48,7 @@ export default function DashboardPage() {
         />
         <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem', color: '#fff' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.7rem' }}>
-            <div style={{ width: '36px', height: '36px', background: '#F47920', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ width: '36px', height: '36px', background: '#F5C200', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <i className="fa-solid fa-user" style={{ color: '#fff', fontSize: '0.9rem' }} />
             </div>
             <div>
@@ -72,8 +72,8 @@ export default function DashboardPage() {
         <div style={{ maxWidth: '1000px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div>
             <h1 style={{ fontSize: '1.3rem', fontWeight: 700, marginBottom: '0.2rem' }}>
-              <i className="fa-solid fa-hand-wave" style={{ marginRight: '0.5rem', color: '#F47920' }} />
-              Bienvenido, <span style={{ color: '#F47920' }}>{nombre}</span>
+              <i className="fa-solid fa-hand-wave" style={{ marginRight: '0.5rem', color: '#F5C200' }} />
+              Bienvenido, <span style={{ color: '#F5C200' }}>{nombre}</span>
             </h1>
             <p style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.75)', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
               <i className="fa-solid fa-lock" style={{ fontSize: '0.75rem' }} />
@@ -81,7 +81,7 @@ export default function DashboardPage() {
             </p>
           </div>
           <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.7)', textAlign: 'right' }}>
-            <i className="fa-solid fa-shield-halved" style={{ color: '#F47920', fontSize: '1.5rem' }} />
+            <i className="fa-solid fa-shield-halved" style={{ color: '#F5C200', fontSize: '1.5rem' }} />
           </div>
         </div>
       </div>
@@ -148,7 +148,7 @@ export default function DashboardPage() {
             {/* Accesos rápidos */}
             <div style={{ background: '#fff', borderRadius: '12px', boxShadow: '0 2px 12px rgba(0,74,159,0.08)', padding: '1.2rem 1.5rem' }}>
               <h3 style={{ fontSize: '0.9rem', fontWeight: 700, color: '#1A1A2E', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <i className="fa-solid fa-bolt" style={{ color: '#F47920' }} /> Accesos rápidos
+                <i className="fa-solid fa-bolt" style={{ color: '#F5C200' }} /> Accesos rápidos
               </h3>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.7rem' }}>
                 {acciones.map((a) => (
@@ -179,7 +179,7 @@ export default function DashboardPage() {
                     <i className={`fa-solid ${row.icono}`} style={{ color: '#004A9F', width: '14px' }} />
                     {row.label}
                   </span>
-                  <span style={{ fontWeight: 600, color: row.label === 'Tipo cliente' ? '#F47920' : '#333', fontSize: row.label === 'Correo' ? '0.74rem' : '0.82rem', maxWidth: '140px', textAlign: 'right', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                  <span style={{ fontWeight: 600, color: row.label === 'Tipo cliente' ? '#F5C200' : '#333', fontSize: row.label === 'Correo' ? '0.74rem' : '0.82rem', maxWidth: '140px', textAlign: 'right', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                     {row.valor}
                   </span>
                 </div>

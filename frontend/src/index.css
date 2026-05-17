@@ -8,8 +8,8 @@
   --azul: #004A9F;
   --azul-oscuro: #003580;
   --azul-nav: #002D6E;
-  --naranja: #F47920;
-  --naranja-claro: #FF9A45;
+  --amarillo: #F5C200;
+  --amarillo-claro: #FFD740;
   --celeste: #00AEEF;
   --gris-claro: #F5F7FA;
   --gris-borde: #E0E6EF;
@@ -56,13 +56,13 @@ button {
   background: var(--azul-oscuro);
 }
 
-.btn-naranja {
-  background: var(--naranja);
-  color: var(--blanco);
+.btn-amarillo {
+  background: var(--amarillo);
+  color: var(--negro);
 }
 
-.btn-naranja:hover {
-  background: var(--naranja-claro);
+.btn-amarillo:hover {
+  background: var(--amarillo-claro);
 }
 
 .btn-outline-blanco {

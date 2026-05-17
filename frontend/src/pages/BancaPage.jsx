@@ -39,7 +39,7 @@ export default function BancaPage() {
           {/* Beneficios */}
           <div style={{ background: '#F0F5FF', border: '1px solid #C5D8FF', borderRadius: '10px', padding: '1.2rem', marginBottom: '1.8rem', textAlign: 'left' }}>
             <div style={{ fontWeight: 700, color: '#004A9F', fontSize: '0.85rem', marginBottom: '0.8rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <i className="fa-solid fa-star" style={{ color: '#F47920' }} /> ¿Qué puedes hacer?
+              <i className="fa-solid fa-star" style={{ color: '#F5C200' }} /> ¿Qué puedes hacer?
             </div>
             {[
               { icon: 'fa-chart-line',      text: 'Consultar saldos y movimientos' },
