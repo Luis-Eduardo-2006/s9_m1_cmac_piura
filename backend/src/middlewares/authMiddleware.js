@@ -19,6 +19,7 @@ async function verificarToken(req, res, next) {
     email: data.user.email,
     nombre: data.user.user_metadata?.nombre || data.user.email.split('@')[0],
   };
+  req.token = token;
 
   next();
 }
