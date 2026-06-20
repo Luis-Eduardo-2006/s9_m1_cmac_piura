@@ -1,4 +1,5 @@
 const supabase = require('../config/supabase');
+const { resetearIntentos } = require('../middlewares/rateLimiter');
 
 async function login(req, res) {
   const { email, password } = req.body;
@@ -12,6 +13,9 @@ async function login(req, res) {
   if (error) {
     return res.status(401).json({ message: 'Credenciales incorrectas' });
   }
+
+  const ip = req.ip || req.connection.remoteAddress;
+  resetearIntentos(email, ip);
 
   res.json({
     token: data.session.access_token,
