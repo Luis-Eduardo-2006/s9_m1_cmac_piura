@@ -1,0 +1,36 @@
+// Los 30 casos del tarifario "Crédito Empresarial – Micro Micro".
+// conDesgravamen: true → TEA 40.92 %  |  false → TEA 43.92 %
+// cuotaEsperada = valor del enunciado del profesor (para validar el simulador).
+
+export const casos = [
+  { id: 1,  cliente: 'Castor Pérez',        monto: 1000,  plazoMeses: 12, conDesgravamen: false, fechaDesembolso: '2026-02-02', primeraCuota: '2026-03-03', cuotaEsperada: 100.95 },
+  { id: 2,  cliente: 'Eneida Mamani',       monto: 3000,  plazoMeses: 12, conDesgravamen: true,  fechaDesembolso: '2026-02-05', primeraCuota: '2026-03-05', cuotaEsperada: 299.59 },
+  { id: 3,  cliente: 'Ovidio Torres',       monto: 5000,  plazoMeses: 18, conDesgravamen: false, fechaDesembolso: '2026-02-10', primeraCuota: '2026-03-10', cuotaEsperada: 366.02 },
+  { id: 4,  cliente: 'Dante Flores',        monto: 8000,  plazoMeses: 6,  conDesgravamen: false, fechaDesembolso: '2026-02-15', primeraCuota: '2026-03-15', cuotaEsperada: 1480.73 },
+  { id: 5,  cliente: 'Laura Mendoza',       monto: 10000, plazoMeses: 12, conDesgravamen: false, fechaDesembolso: '2026-03-01', primeraCuota: '2026-04-03', cuotaEsperada: 1009.46 },
+  { id: 6,  cliente: 'Boccaccio Vargas',    monto: 12000, plazoMeses: 24, conDesgravamen: true,  fechaDesembolso: '2026-03-05', primeraCuota: '2026-04-05', cuotaEsperada: 700.94 },
+  { id: 7,  cliente: 'Orlando Ríos',        monto: 15000, plazoMeses: 18, conDesgravamen: false, fechaDesembolso: '2026-03-10', primeraCuota: '2026-04-10', cuotaEsperada: 1098.07 },
+  { id: 8,  cliente: 'Gerusalemme Huanca',  monto: 18000, plazoMeses: 24, conDesgravamen: false, fechaDesembolso: '2026-03-15', primeraCuota: '2026-04-15', cuotaEsperada: 1072.10 },
+  { id: 9,  cliente: 'Pedro Calderón',      monto: 20000, plazoMeses: 36, conDesgravamen: false, fechaDesembolso: '2026-04-02', primeraCuota: '2026-05-03', cuotaEsperada: 927.12 },
+  { id: 10, cliente: 'Félix Chávez',        monto: 25000, plazoMeses: 24, conDesgravamen: true,  fechaDesembolso: '2026-04-05', primeraCuota: '2026-05-05', cuotaEsperada: 1460.29 },
+  { id: 11, cliente: 'Hildegarda Huanca',   monto: 2000,  plazoMeses: 12, conDesgravamen: false, fechaDesembolso: '2026-04-10', primeraCuota: '2026-05-10', cuotaEsperada: 201.89 },
+  { id: 12, cliente: 'Stendhal Aguilar',    monto: 4000,  plazoMeses: 18, conDesgravamen: false, fechaDesembolso: '2026-04-15', primeraCuota: '2026-05-15', cuotaEsperada: 292.82 },
+  { id: 13, cliente: 'Kipling Soto',        monto: 6000,  plazoMeses: 12, conDesgravamen: true,  fechaDesembolso: '2026-05-02', primeraCuota: '2026-06-03', cuotaEsperada: 599.17 },
+  { id: 14, cliente: 'Erinná Espinoza',     monto: 7500,  plazoMeses: 6,  conDesgravamen: false, fechaDesembolso: '2026-05-05', primeraCuota: '2026-06-05', cuotaEsperada: 1388.18 },
+  { id: 15, cliente: 'Annie Espinoza',      monto: 9000,  plazoMeses: 24, conDesgravamen: false, fechaDesembolso: '2026-05-10', primeraCuota: '2026-06-10', cuotaEsperada: 536.05 },
+  { id: 16, cliente: 'Homero Quispe',       monto: 11000, plazoMeses: 18, conDesgravamen: true,  fechaDesembolso: '2026-05-15', primeraCuota: '2026-06-15', cuotaEsperada: 793.03 },
+  { id: 17, cliente: 'Virgilio Mamani',     monto: 13500, plazoMeses: 12, conDesgravamen: false, fechaDesembolso: '2026-06-02', primeraCuota: '2026-07-03', cuotaEsperada: 1362.77 },
+  { id: 18, cliente: 'Ovidio Torres',       monto: 16000, plazoMeses: 36, conDesgravamen: false, fechaDesembolso: '2026-06-05', primeraCuota: '2026-07-05', cuotaEsperada: 741.70 },
+  { id: 19, cliente: 'Dante Flores',        monto: 17000, plazoMeses: 24, conDesgravamen: true,  fechaDesembolso: '2026-06-10', primeraCuota: '2026-07-10', cuotaEsperada: 993.00 },
+  { id: 20, cliente: 'Laura Mendoza',       monto: 19000, plazoMeses: 18, conDesgravamen: false, fechaDesembolso: '2026-06-15', primeraCuota: '2026-07-15', cuotaEsperada: 1390.89 },
+  { id: 21, cliente: 'Boccaccio Vargas',    monto: 22000, plazoMeses: 36, conDesgravamen: false, fechaDesembolso: '2026-07-02', primeraCuota: '2026-08-03', cuotaEsperada: 1019.83 },
+  { id: 22, cliente: 'Orlando Ríos',        monto: 24000, plazoMeses: 24, conDesgravamen: true,  fechaDesembolso: '2026-07-05', primeraCuota: '2026-08-05', cuotaEsperada: 1401.88 },
+  { id: 23, cliente: 'Gerusalemme Huanca',  monto: 1500,  plazoMeses: 6,  conDesgravamen: false, fechaDesembolso: '2026-07-10', primeraCuota: '2026-08-10', cuotaEsperada: 277.64 },
+  { id: 24, cliente: 'Pedro Calderón',      monto: 3500,  plazoMeses: 12, conDesgravamen: false, fechaDesembolso: '2026-07-15', primeraCuota: '2026-08-15', cuotaEsperada: 353.31 },
+  { id: 25, cliente: 'Félix Chávez',        monto: 5500,  plazoMeses: 18, conDesgravamen: true,  fechaDesembolso: '2026-08-02', primeraCuota: '2026-09-03', cuotaEsperada: 396.52 },
+  { id: 26, cliente: 'Hildegarda Huanca',   monto: 7000,  plazoMeses: 24, conDesgravamen: false, fechaDesembolso: '2026-08-05', primeraCuota: '2026-09-05', cuotaEsperada: 416.93 },
+  { id: 27, cliente: 'Stendhal Aguilar',    monto: 8500,  plazoMeses: 12, conDesgravamen: false, fechaDesembolso: '2026-08-10', primeraCuota: '2026-09-10', cuotaEsperada: 858.04 },
+  { id: 28, cliente: 'Kipling Soto',        monto: 10500, plazoMeses: 36, conDesgravamen: true,  fechaDesembolso: '2026-08-15', primeraCuota: '2026-09-15', cuotaEsperada: 473.77 },
+  { id: 29, cliente: 'Erinná Espinoza',     monto: 14000, plazoMeses: 18, conDesgravamen: false, fechaDesembolso: '2026-09-02', primeraCuota: '2026-10-03', cuotaEsperada: 1024.87 },
+  { id: 30, cliente: 'Annie Espinoza',      monto: 30000, plazoMeses: 24, conDesgravamen: false, fechaDesembolso: '2026-09-05', primeraCuota: '2026-10-05', cuotaEsperada: 1786.83 },
+];

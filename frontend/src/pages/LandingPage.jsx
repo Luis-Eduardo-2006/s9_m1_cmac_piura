@@ -143,7 +143,7 @@ export default function LandingPage() {
           </h2>
           <p style={{ color: '#555', fontSize: '0.9rem' }}>Calcula tus cuotas y tasas en segundos, sin compromiso.</p>
         </div>
-        <button className="btn btn-amarillo" style={{ whiteSpace: 'nowrap', borderRadius: '8px', padding: '0.8rem 2rem', fontSize: '0.95rem' }}>
+        <button className="btn btn-amarillo" style={{ whiteSpace: 'nowrap', borderRadius: '8px', padding: '0.8rem 2rem', fontSize: '0.95rem' }} onClick={() => navigate('/simulador')}>
           <i className="fa-solid fa-calculator" /> Simular ahora
         </button>
       </section>
