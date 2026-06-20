@@ -86,3 +86,36 @@ button {
   font-size: 0.85rem;
   margin-top: 0.4rem;
 }
+
+/* ── Responsive utilities ─────────────────────────────────── */
+/* Prevent iOS Safari auto-zoom on inputs */
+input, select, textarea {
+  font-size: 16px;
+}
+
+@media (max-width: 639px) {
+  .hide-mobile  { display: none !important; }
+  .show-mobile  { display: flex !important; }
+  .stack-mobile { flex-direction: column !important; }
+  .full-mobile  { width: 100% !important; max-width: 100% !important; }
+  .center-mobile { text-align: center !important; justify-content: center !important; }
+  .p-mobile { padding: 1rem !important; }
+}
+
+@media (min-width: 640px) {
+  .hide-desktop { display: none !important; }
+  .show-desktop { display: flex !important; }
+}
+
+/* Smooth collapse for mobile nav */
+.mobile-nav-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #003580;
+  z-index: 200;
+  padding: 1rem 1.5rem 1.5rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
