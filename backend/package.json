@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "node app.js"
+    "dev": "node app.js",
+    "test:casos": "node test/validar_casos_backend.mjs"
   },
   "keywords": [],
   "author": "",

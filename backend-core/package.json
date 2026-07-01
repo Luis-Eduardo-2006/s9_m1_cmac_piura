@@ -1,0 +1,23 @@
+{
+  "name": "cmac-backend-core",
+  "version": "1.0.0",
+  "description": "API del CORE bancario (personal del banco) — flujo de otorgamiento de crédito CMAC Piura",
+  "main": "app.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node app.js",
+    "test:reglas": "node test/reglas.test.mjs",
+    "test:rbac": "node test/rbac.test.mjs",
+    "test:mora": "node test/mora.test.mjs",
+    "test:seguridad": "node test/seguridad.test.mjs",
+    "test:dashboard": "node test/dashboard.test.mjs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.101.1",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1"
+  }
+}

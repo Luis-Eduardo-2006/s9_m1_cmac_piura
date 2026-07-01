@@ -4,6 +4,8 @@ import BancaPage from './pages/BancaPage';
 import LoginPage from './pages/LoginPage';
 import DashboardPage from './pages/DashboardPage';
 import SimuladorPage from './pages/SimuladorPage';
+import SolicitarCreditoPage from './pages/SolicitarCreditoPage';
+import MisSolicitudesPage from './pages/MisSolicitudesPage';
 import ProtectedRoute from './components/ProtectedRoute';
 
 export default function App() {
@@ -17,6 +19,16 @@ export default function App() {
         <Route path="/dashboard" element={
           <ProtectedRoute>
             <DashboardPage />
+          </ProtectedRoute>
+        } />
+        <Route path="/solicitar-credito" element={
+          <ProtectedRoute>
+            <SolicitarCreditoPage />
+          </ProtectedRoute>
+        } />
+        <Route path="/mis-solicitudes" element={
+          <ProtectedRoute>
+            <MisSolicitudesPage />
           </ProtectedRoute>
         } />
       </Routes>

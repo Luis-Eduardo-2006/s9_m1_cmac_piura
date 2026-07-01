@@ -4,6 +4,7 @@ require('dotenv').config();
 
 const authRoutes = require('./src/routes/authRoutes');
 const dataRoutes = require('./src/routes/dataRoutes');
+const hbRoutes   = require('./src/routes/hbRoutes');
 
 const app = express();
 
@@ -33,6 +34,7 @@ app.use(cors({
 app.use(express.json());
 
 app.use('/api/auth', authRoutes);
+app.use('/api/hb', hbRoutes);
 app.use('/api', dataRoutes);
 
 app.get('/', (req, res) => {

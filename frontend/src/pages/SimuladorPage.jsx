@@ -1,7 +1,7 @@
-import { useState, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { casos } from '../data/casos';
-import { generarCronograma } from '../lib/amortizacion';
+import { simularCredito } from '../services/dataService';
 import { useResponsive } from '../hooks/useResponsive';
 
 const AZUL     = '#004A9F';
@@ -20,11 +20,48 @@ export default function SimuladorPage() {
   const [primeraCuota,   setPrimeraCuota]   = useState('2026-03-03');
   const [casoCargado,    setCasoCargado]    = useState('');
 
-  const resultado = useMemo(() => {
+  // El cálculo vive en el backend (Core). Aquí solo se consume el endpoint.
+  const [resultado, setResultado] = useState(null);
+  const [cargando,  setCargando]  = useState(false);
+  const [error,     setError]     = useState('');
+
+  useEffect(() => {
     const m = Number(monto);
     const n = Number(meses);
-    if (!m || !n || m <= 0 || n <= 0) return null;
-    return generarCronograma(m, n, conDesgravamen, primeraCuota);
+    if (!m || !n || m <= 0 || n <= 0) {
+      setResultado(null);
+      setError('');
+      setCargando(false);
+      return;
+    }
+
+    let cancelado = false;
+    setCargando(true);
+    setError('');
+
+    // Debounce: evita una petición por cada tecla.
+    const t = setTimeout(async () => {
+      try {
+        const data = await simularCredito({
+          productoCodigo: 'EMP',
+          monto: m,
+          plazoMeses: n,
+          conDesgravamen,
+          primeraCuota,
+        });
+        if (cancelado) return;
+        // Respuesta del backend: { producto, tea, tem, cuota, cronograma }
+        setResultado({ cuota: data.cuota, tea: data.tea, tem: data.tem, filas: data.cronograma });
+      } catch (e) {
+        if (cancelado) return;
+        setResultado(null);
+        setError(e?.response?.data?.message || 'No se pudo conectar con el servidor.');
+      } finally {
+        if (!cancelado) setCargando(false);
+      }
+    }, 350);
+
+    return () => { cancelado = true; clearTimeout(t); };
   }, [monto, meses, conDesgravamen, primeraCuota]);
 
   function cargarCaso(id) {
@@ -115,12 +152,20 @@ export default function SimuladorPage() {
           {/* Resultado */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
 
+            {/* Error de red / validación del backend */}
+            {error && (
+              <div style={{ padding: '0.8rem 1rem', borderRadius: 12, fontSize: '0.82rem', background: '#FEF0F0', border: '1.5px solid #E74C3C', color: '#b3261e', display: 'flex', alignItems: 'center', gap: 8 }}>
+                <i className="fa-solid fa-triangle-exclamation" />
+                <span>{error}</span>
+              </div>
+            )}
+
             {/* Cuota */}
             <div style={{ ...card, background: 'linear-gradient(120deg, #003580 0%, #004A9F 100%)', color: '#fff', position: 'relative', overflow: 'hidden' }}>
               <div style={{ position: 'absolute', right: -20, bottom: -20, width: 100, height: 100, background: 'rgba(255,255,255,0.05)', borderRadius: '50%' }} />
               <div style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.65)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: 6 }}>Cuota mensual</div>
               <div style={{ fontSize: isMobile ? '2rem' : '2.4rem', fontWeight: 900, color: AMARILLO, letterSpacing: '-1px', lineHeight: 1 }}>
-                {resultado ? money(resultado.cuota) : '—'}
+                {resultado ? money(resultado.cuota) : (cargando ? 'Calculando…' : '—')}
               </div>
               {resultado && (
                 <div style={{ fontSize: '0.76rem', color: 'rgba(255,255,255,0.6)', marginTop: 8 }}>

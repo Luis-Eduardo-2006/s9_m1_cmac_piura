@@ -1,0 +1,13 @@
+:root {
+  --azul: #004A9F;
+  --amarillo: #F5C200;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #EEF2FA;
+  color: #1A1A2E;
+}
+a { color: var(--azul); }
+button { font-family: inherit; }

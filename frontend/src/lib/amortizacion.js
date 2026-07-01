@@ -1,3 +1,10 @@
+// ⚠️ HISTÓRICO / NO USAR PARA CALCULAR.
+// El cálculo de crédito ahora vive en el CORE (backend):
+//   backend/src/services/amortizacionService.js  (la TEA se lee de cmac_productos).
+// El SimuladorPage consume el endpoint POST /api/creditos/simular.
+// Este archivo se conserva solo como referencia de la fórmula original; ningún
+// componente debe importarlo para calcular (una sola fuente de verdad: el backend).
+//
 // Lógica de amortización francesa (cuota fija) para el simulador de crédito.
 // Tarifario "Crédito Empresarial – Micro Micro":
 //   con seguro de desgravamen → TEA 40.92 %   |   sin seguro → TEA 43.92 %

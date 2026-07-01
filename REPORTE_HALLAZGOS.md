@@ -16,12 +16,14 @@
 | E1 | Error exposure | `dataController` devolvía `error.message` de Supabase al cliente (filtra estructura interna de BD) | Mensaje genérico al cliente + `console.error` interno | **Media** |
 | 4 | Secretos / Config | URLs de API hardcodeadas en código fuente; sin `.env.example` | Variables de entorno `VITE_API_URL` en frontend; `.env.example` en backend y frontend | **Baja** |
 | 5 | Dependencias | `s9_m1_react_supabase/` usaba `vite@5.4.1` (CVE-2025-30208, path traversal en dev server) | Frontend principal actualizado a `vite@5.4.21`; subdirectorio no usar para desarrollo | **Media** |
+| P4-1 | Credenciales en texto plano (Core, P4) | Login del personal comparaba `password == numerodni` en claro; sin hashing en reposo | `bcrypt` en reposo (`crypt/gen_salt('bf',10)`) + `bcrypt.compare` en el login | **Alta** |
+| P4-2 | Fuerza bruta (Core, P4) | El login del Core (`/api/core/auth/login`) no tenía límite de intentos | Rate limiting: 5 intentos/15 min por IP+DNI + bloqueo temporal (429) | **Alta** |
 
 ### Labs NO aplicables a este stack (y por qué)
 
 | Lab | Razón |
 |---|---|
-| **Lab 1 (bcrypt)** | Supabase Auth maneja el hashing de contraseñas internamente con bcrypt. No hay comparación en texto plano. |
+| **Lab 1 (bcrypt)** | En el **Homebanking**, Supabase Auth maneja el hashing internamente. ⚠️ **Actualización P4:** el **Core** (`/backend-core`) introdujo autenticación propia del personal y SÍ tenía contraseñas en texto plano — corregido con bcrypt (ver **Hallazgo 6**). |
 | **Lab 2 (SQL Injection)** | Cero SQL crudo. Todo acceso a BD usa el cliente JS de Supabase, que parametriza automáticamente. |
 | **Lab 3 (AES en reposo)** | Supabase cifra la base de datos en reposo por defecto. No hay campos sensibles expuestos en claro. |
 | **Mejora A (IDOR)** | `clienteParaUsuario(token)` pasa el JWT del usuario a Supabase. Si RLS (Row Level Security) está activo en las tablas `cmac_cuentas` y `cmac_movimientos`, el filtrado es automático por usuario. Verificar activación de RLS en panel Supabase. |
@@ -161,6 +163,85 @@ El error real se registra en el servidor con `console.error('[listarCuentas]', e
 **Frontend principal instalado:** `vite@5.4.21` ✅ no vulnerable
 
 **Recomendación:** Usar siempre el frontend principal en `frontend/` (tiene vite 5.4.21). No usar `frontend/s9_m1_react_supabase/` para desarrollo. Cuando haya conectividad de red, ejecutar `npm audit fix` para actualizar dependencias automáticamente.
+
+---
+
+### Hallazgo 6 — Credenciales del personal en texto plano (Core, P4)
+
+**Severidad:** Alta
+**Endpoint afectado:** `POST /api/core/auth/login` (backend-core)
+**Fecha:** 2026-07-01
+
+**Descripción:** El Core del banco (introducido en P2/P3) autenticaba al personal comparando
+la contraseña ingresada directamente contra `cmac_personal.numerodni` **en texto plano**
+(`password === numerodni`). No existía ningún hash: si un atacante leyera la tabla, la
+"contraseña" era el propio DNI, visible.
+
+**Evidencia (antes):**
+```javascript
+// backend-core/src/controllers/authController.js (P2/P3)
+if (String(password).trim() !== personal.numerodni) {
+  return res.status(401).json({ message: 'Credenciales incorrectas' });
+}
+// No hay hash: la comparación es en claro contra un dato público (el DNI).
+```
+
+**Después:**
+```sql
+-- backend/db/11_hash_personal.sql
+alter table cmac_personal add column if not exists password_hash text;
+update cmac_personal
+set password_hash = crypt(numerodni, gen_salt('bf', 10))   -- bcrypt $2a$
+where password_hash is null;
+```
+```javascript
+// backend-core/src/controllers/authController.js (P4)
+const passwordOk = personal?.password_hash
+  ? await bcrypt.compare(String(password), personal.password_hash)
+  : false;
+```
+Verificación en BD: `password_hash` con prefijo `$2a$10$` y
+`password_hash = crypt(numerodni, password_hash)` → `true` (el DNI sigue siendo la contraseña
+efectiva en desarrollo, pero ya **hasheada en reposo**).
+
+**Recomendación aplicada:** hashing bcrypt (coste 10) con `pgcrypto` en reposo + `bcrypt.compare`
+en el login. En producción se forzaría cambio de contraseña en el primer ingreso. Test:
+`backend-core/test/rbac.test.mjs` (login correcto → 200, contraseña errónea → 401).
+
+**Archivos:** `backend/db/11_hash_personal.sql` _(nuevo)_,
+`backend-core/src/controllers/authController.js`, `backend-core/src/repositories/personalRepository.js`,
+`backend-core/package.json` (`bcryptjs`).
+
+---
+
+### Hallazgo 7 — Login del Core sin límite de intentos (fuerza bruta, P4)
+
+**Severidad:** Alta
+**Endpoint afectado:** `POST /api/core/auth/login` (backend-core)
+**Fecha:** 2026-07-01
+
+**Descripción:** A diferencia del login del Homebanking (que ya tenía rate limiting, ver
+Hallazgo 1), el login del **Core** no tenía ningún control de tasa: un atacante podía probar
+DNIs/contraseñas de forma ilimitada (los DNIs `11111111..` son adivinables).
+
+**Evidencia (antes):** cada `POST /api/core/auth/login` se procesaba sin límite ni bloqueo.
+
+**Después:**
+```
+Intentos 1–5 => procesados
+Intento 6    => HTTP 429  "Demasiados intentos fallidos. Cuenta bloqueada por 15 minutos."
+```
+
+**Recomendación aplicada:** middleware `backend-core/src/middlewares/rateLimiter.js` (en memoria,
+por `ip:numerodni`): 5 intentos / 15 min, bloqueo 15 min, reseteo al login exitoso. Mismo patrón
+que el Homebanking.
+
+**Archivos:** `backend-core/src/middlewares/rateLimiter.js` _(nuevo)_,
+`backend-core/src/routes/authRoutes.js`, `backend-core/src/controllers/authController.js`.
+
+> **Bonus RBAC (Criterio 3):** además, el Core valida ahora un **JWT con `aud:'core'`** (separación
+> cliente/personal) y una **matriz de permisos por rol** (403 a acciones que no corresponden). Ver
+> CLAUDE.md "## Seguridad y RBAC" y `backend-core/test/rbac.test.mjs` (8/8).
 
 ---
 

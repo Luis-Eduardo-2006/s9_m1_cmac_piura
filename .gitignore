@@ -1,10 +1,42 @@
-node_modules/
+# ============================================================
+#  .gitignore — CMAC Piura (Core Bancario + Homebanking)
+# ============================================================
+
+# --- Secretos y entorno ---
+# Se ignora cualquier .env y variantes, EXCEPTO los .env.example (esos SÍ se publican).
 .env
-.env.local
+.env.*
+!.env.example
+
+# --- Config de tooling de asistencia (solo local) ---
+.mcp.json
+.cursor/
+.cursorrules
+.aider*
+.claude/
+CLAUDE.md
+
+# --- Documentos internos de proceso (no son documentación de producto) ---
+PROMPTS*
+NOTAS*
+notas*
+ROADMAP*
+roadmap*
+TODO*
+todo*
+SCRATCH*
+scratch*
+
+# --- Artefactos de build y dependencias ---
+node_modules/
 dist/
+build/
+coverage/
 *.log
 .DS_Store
-.claude/
-.mcp.json
-*.backup-*
 .vercel/
+
+# --- Backups de base de datos (pueden contener datos reales) ---
+backend/db/backup/
+*.backup-*
+*.dump
